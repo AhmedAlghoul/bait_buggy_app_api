@@ -11,18 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('user_name')->default('');
-            $table->string('email')->unique();
-            $table->string('phone_number')->nullable();
-            $table->string('photo')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('title');
+            $table->bigInteger('price');
+            $table->foreignId('image_id')->constrained('images', 'id')->cascadeOnDelete();
+            $table->string('description');
+            $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained('categories', 'id')->cascadeOnDelete();
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
-            $table->enum('user_type', ['user', 'shop_owner']);
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('products');
     }
 };
