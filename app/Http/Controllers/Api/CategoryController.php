@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return Category::all();
     }
 
     /**
@@ -20,7 +21,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'category_name' => 'required',
+                'is_active' => 'required',
+            ]
+        );
+        return Category::create($request->all());
     }
 
     /**
@@ -36,7 +43,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::find($id);
+        $category->update($request->all());
+        return $category;
     }
 
     /**
@@ -44,6 +53,6 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return Category::destroy($id);
     }
 }

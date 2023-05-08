@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Block;
 use Illuminate\Http\Request;
 
 class BlockController extends Controller
@@ -12,7 +13,7 @@ class BlockController extends Controller
      */
     public function index()
     {
-        //
+        return Block::all();
     }
 
     /**
@@ -20,7 +21,13 @@ class BlockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'blocker_id' => 'required',
+                'blocked_id' => 'required',
+            ]
+        );
+        return Block::create($request->all());
     }
 
     /**
@@ -44,6 +51,6 @@ class BlockController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return Block::destroy($id);
     }
 }

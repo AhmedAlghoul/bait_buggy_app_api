@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return Product::all();
     }
 
     /**
@@ -20,7 +21,35 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'title' => 'required',
+                'price' => 'required',
+                'description' => 'required',
+                'user_id' => 'required|exists:users,id',
+                'category_id' => 'required|exists:categories,id',
+                'latitude' => 'nullable',
+                'longitude' => 'nullable',
+                'address' => 'nullable',
+                // 'image.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                // 'image' => 'required',
+            ]
+        );
+        $product = Product::create($request->all());
+
+        if ($request->hasFile('image')) {
+
+            foreach ($request->file('image') as $img) {
+            $file = $img;
+            $image_file = $file->store('/products', [
+                'disk' => 'uploads',
+            ]);
+            $product->images()->create([
+                'image_path' => $image_file
+            ]);
+            }
+        }
+        return $product;
     }
 
     /**
@@ -44,6 +73,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //need to delete the related models to it
+        return Product::destroy($id);
     }
 }

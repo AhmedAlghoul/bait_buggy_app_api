@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->bigInteger('price');
-            $table->foreignId('image_id')->constrained('images', 'id')->cascadeOnDelete();
             $table->string('description');
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->foreignId('category_id')->constrained('categories', 'id')->cascadeOnDelete();
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Report;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -12,7 +13,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        return Report::all();
     }
 
     /**
@@ -20,7 +21,14 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'product_id' => 'required|exists:products,id',
+                'user_id' => 'required|exists:users,id',
+                'report_text' => 'nullable',
+            ]
+        );
+        return Report::create($request->all());
     }
 
     /**
@@ -36,7 +44,16 @@ class ReportController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate(
+            [
+                'product_id' => 'required|exists:products,id',
+                'user_id' => 'required|exists:users,id',
+                'report_text' => 'nullable',
+            ]
+        );
+        $product = Report::find($id);
+        $product->update($request->all());
+        return $product;
     }
 
     /**
@@ -44,6 +61,6 @@ class ReportController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return Report::destroy($id);
     }
 }

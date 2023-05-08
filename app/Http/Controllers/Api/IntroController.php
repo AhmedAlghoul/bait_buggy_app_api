@@ -21,7 +21,30 @@ class IntroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'title' => 'required',
+                'description' => 'required',
+            ]
+        );
+        if ($request->hasFile('image')) {
+
+            $file = $request->file('image');
+
+            $image_file = $file->store('/', [
+                'disk' => 'uploads',
+            ]);
+            $request->merge([
+                'image_path' => $image_file,
+            ]);
+        }
+
+        return Intro::create([
+            'image_path' => $request->input('image_path'),
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+        ]);
     }
 
     /**
@@ -37,7 +60,30 @@ class IntroController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $intro = Intro::findOrFail($id);
+        $request->validate(
+            [
+                'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'title' => 'required',
+                'description' => 'required',
+            ]
+        );
+
+        if ($request->hasFile('image')) {
+
+            $file = $request->file('image');
+
+            $image_file = $file->store('/', [
+                'disk' => 'uploads',
+            ]);
+            $intro->image_path = $image_file;
+        }
+
+        $intro->title = $request->input('title');
+        $intro->description = $request->input('description');
+        $intro->save();
+
+        return $intro;
     }
 
     /**
@@ -45,6 +91,6 @@ class IntroController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return Intro::destroy($id);
     }
 }

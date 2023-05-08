@@ -29,7 +29,8 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 
-Route::apiResource('Intros', IntroController::class);
+Route::apiResource('intros', IntroController::class);
+// Route::post('intros/{id}',[IntroController::class , 'update']);
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('notifications', NotificationController::class);
 Route::apiResource('favorites', FavoriteController::class);
@@ -42,4 +43,5 @@ Route::apiResource('shops', ShopController::class);
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+
 });
