@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
@@ -12,7 +13,7 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        //
+        return Favorite::all();
     }
 
     /**

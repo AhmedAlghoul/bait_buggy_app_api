@@ -38,10 +38,11 @@ Route::apiResource('blocks', BlockController::class);
 Route::apiResource('reports', ReportController::class);
 Route::apiResource('images', ImageController::class);
 Route::apiResource('products', ProductController::class);
+Route::get('/products/search/{title}', [ProductController::class, 'search']);
+
 Route::apiResource('shops', ShopController::class);
 
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-
 });

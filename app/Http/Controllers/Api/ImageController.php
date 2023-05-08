@@ -45,6 +45,6 @@ class ImageController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return Image::destroy($id);
     }
 }
