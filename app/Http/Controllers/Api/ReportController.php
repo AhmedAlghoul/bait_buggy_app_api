@@ -14,6 +14,8 @@ class ReportController extends Controller
     public function index()
     {
         return Report::all();
+        // $all = Report::with('users')->get();
+        //         dd($all);
     }
 
     /**
@@ -44,16 +46,16 @@ class ReportController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate(
-            [
-                'product_id' => 'required|exists:products,id',
-                'user_id' => 'required|exists:users,id',
-                'report_text' => 'nullable',
-            ]
-        );
-        $product = Report::find($id);
-        $product->update($request->all());
-        return $product;
+        // $request->validate(
+        //     [
+        //         'product_id' => 'required|exists:products,id',
+        //         'user_id' => 'required|exists:users,id',
+        //         'report_text' => 'nullable',
+        //     ]
+        // );
+        // $product = Report::find($id);
+        // $product->update($request->all());
+        // return $product;
     }
 
     /**

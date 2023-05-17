@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Favorite extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $guarded = [];
 }

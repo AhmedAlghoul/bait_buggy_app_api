@@ -27,22 +27,32 @@ use Illuminate\Support\Facades\Route;
 //Public routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/forgetpassword', [AuthController::class, 'forgetpassword']);
+Route::get('showintros', [IntroController::class, 'index']);
 
-
-Route::apiResource('intros', IntroController::class);
+// Route::apiResource('intros', IntroController::class);
 // Route::post('intros/{id}',[IntroController::class , 'update']);
-Route::apiResource('categories', CategoryController::class);
+
 Route::apiResource('notifications', NotificationController::class);
 Route::apiResource('favorites', FavoriteController::class);
+Route::delete('favorites/{product_id}/{user_id}',[FavoriteController::class , 'destroy']);
 Route::apiResource('blocks', BlockController::class);
 Route::apiResource('reports', ReportController::class);
 Route::apiResource('images', ImageController::class);
 Route::apiResource('products', ProductController::class);
 Route::get('/products/search/{title}', [ProductController::class, 'search']);
+// Route::apiResource('categories', CategoryController::class);
+
 
 Route::apiResource('shops', ShopController::class);
 
+//protected
+Route::get('showcategories', [CategoryController::class, 'index']);
+
+
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
+
     Route::post('/logout', [AuthController::class, 'logout']);
+
 });

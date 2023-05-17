@@ -21,12 +21,12 @@ class BlockController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(
-            [
-                'blocker_id' => 'required',
-                'blocked_id' => 'required',
-            ]
-        );
+        // $request->validate(
+        //     [
+        //         'blocker_id' => 'required|exists:users,id',
+        //         'blocked_id' => 'required|exists:users,id',
+        //     ]
+        // );
         return Block::create($request->all());
     }
 
@@ -51,6 +51,9 @@ class BlockController extends Controller
      */
     public function destroy(string $id)
     {
-        return Block::destroy($id);
+        // return Block::destroy($id);
+
+        $deleted = Block::destroy($id);
+        return $deleted ? 'Block deleted successfully.' : 'Failed to delete Block.';
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -13,20 +14,17 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Category::all();
+        return response()->json([
+            'status' => true,
+            'data' => Category::all(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategory $request)
     {
-        $request->validate(
-            [
-                'category_name' => 'required',
-                'is_active' => 'required',
-            ]
-        );
         return Category::create($request->all());
     }
 

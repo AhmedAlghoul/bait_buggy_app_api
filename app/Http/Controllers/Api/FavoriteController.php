@@ -21,7 +21,13 @@ class FavoriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'user_id' => 'required|exists:users,id',
+                'product_id' => 'required|exists:products,id',
+            ]
+        );
+        return Favorite::create($request->all());
     }
 
     /**
@@ -43,8 +49,9 @@ class FavoriteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $userId, int $product_id)
     {
-        //
+        Favorite::destroy([$userId, $product_id]);
+        return response()->json(['success' => true]);
     }
 }

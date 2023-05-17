@@ -25,39 +25,42 @@ class ShopController extends Controller
             [
                 'shop_name' => 'required',
                 'phone_number' => 'required',
-                'logo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-                'cover' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'logo_photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'cover_photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]
         );
 
-        if ($request->hasFile('logo')) {
+        if ($request->hasFile('logo_photo')) {
 
-            $file = $request->file('logo');
+            $file = $request->file('logo_photo');
 
             $image_file = $file->store('/', [
                 'disk' => 'uploads',
             ]);
             $request->merge([
-                'image_file' => $image_file,
+                'logo_photo' => $image_file,
             ]);
         }
 
-        if ($request->hasFile('cover')) {
+        if ($request->hasFile('cover_photo')) {
 
-            $coverFile = $request->file('cover');
+            $coverFile = $request->file('cover_photo');
 
             $coverPath = $coverFile->store('/', [
                 'disk' => 'uploads'
             ]);
 
-            $request->merge(['cover_path' => $coverPath]);
+            $request->merge(['cover_photo' => $coverPath]);
         }
 
-        return Shop::create([
-            'image_path' => $request->input('image_path'),
-            // 'title' => $request->input('title'),
-            // 'description' => $request->input('description'),
-        ]);
+        return Shop::create($request->all());
+
+        // return Shop::create([
+        //     'logo_photo' => $request->input('logo_photo'),
+        //     'cover_photo' => $request->input('cover_photo'),
+        //     // 'title' => $request->input('title'),
+        //     // 'description' => $request->input('description'),
+        // ]);
     }
 
     /**
