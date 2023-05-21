@@ -15,6 +15,7 @@ class Product extends Model
     public function users()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+        //belongs to many ?
     }
 
     public function images()
@@ -25,5 +26,11 @@ class Product extends Model
     public function categories()
     {
         return $this->hasMany(Category::class, 'category_id', 'id');
+    }
+
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Favorite::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReport;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
@@ -21,15 +22,8 @@ class ReportController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreReport $request)
     {
-        $request->validate(
-            [
-                'product_id' => 'required|exists:products,id',
-                'user_id' => 'required|exists:users,id',
-                'report_text' => 'nullable',
-            ]
-        );
         return Report::create($request->all());
     }
 

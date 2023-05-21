@@ -11,4 +11,8 @@ class Block extends Model
     public $timestamps = false;
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsToMany(User::class, 'blocks');
+    }
 }

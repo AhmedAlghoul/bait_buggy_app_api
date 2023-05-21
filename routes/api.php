@@ -27,32 +27,28 @@ use Illuminate\Support\Facades\Route;
 //Public routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+//protected
 Route::post('/forgetpassword', [AuthController::class, 'forgetpassword']);
-Route::get('showintros', [IntroController::class, 'index']);
-
-// Route::apiResource('intros', IntroController::class);
-// Route::post('intros/{id}',[IntroController::class , 'update']);
 
 Route::apiResource('notifications', NotificationController::class);
-Route::apiResource('favorites', FavoriteController::class);
-Route::delete('favorites/{product_id}/{user_id}',[FavoriteController::class , 'destroy']);
-Route::apiResource('blocks', BlockController::class);
-Route::apiResource('reports', ReportController::class);
-Route::apiResource('images', ImageController::class);
-Route::apiResource('products', ProductController::class);
-Route::get('/products/search/{title}', [ProductController::class, 'search']);
-// Route::apiResource('categories', CategoryController::class);
-
-
-Route::apiResource('shops', ShopController::class);
-
-//protected
-Route::get('showcategories', [CategoryController::class, 'index']);
 
 
 //Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
+    Route::get('showintros', [IntroController::class, 'index']);
+    Route::get('showcategories', [CategoryController::class, 'index']);
+    Route::get('showshops', [ShopController::class, 'index']);
+    Route::post('addreport', [ReportController::class, 'store']);
+    Route::post('addblock', [BlockController::class, 'store']);
+    Route::get('showfavorites', [FavoriteController::class, 'index']);
+    Route::post('addfavorite', [FavoriteController::class, 'store']);
+    Route::apiResource('products', ProductController::class);
+    Route::get('/products/search/{title}', [ProductController::class, 'search']);
+
+    Route::post('/changepassword', [AuthController::class, 'changepassword']);
+    Route::post('/editprofile', [AuthController::class, 'editprofile']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
 
 });

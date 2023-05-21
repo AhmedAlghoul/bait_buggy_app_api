@@ -10,4 +10,15 @@ class Favorite extends Model
     use HasFactory;
     public $timestamps = false;
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsToMany(Product::class);
+    }
+
 }

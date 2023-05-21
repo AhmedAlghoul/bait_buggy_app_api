@@ -41,57 +41,59 @@ class AuthController extends Controller
 
     //     return response()->json(['message' => 'Reset password email sent']);
     // }
-    
-    // public function editProfile(Request $request)
-    // {
-    //     // Step 1: Validate the input
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'email' => 'required|email',
-    //         // Add any other validation rules for profile fields
-    //     ]);
 
-    //     // Step 2: Get the authenticated user
-    //     $user = auth()->user();
+    public function editprofile(Request $request)
+    {
+        $user = Auth::user();
 
-    //     // Step 3: Update the user's profile
-    //     $user->name = $request->name;
-    //     $user->email = $request->email;
-    //     // Update any other profile fields as needed
-    //     $user->save();
+        $request->validate([
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'user_name' => 'required|string|max:255|unique:users,user_name,' . $user->id,
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'phone_number' => 'nullable|string|max:20',
+            'latitude' => ['nullable', 'numeric', 'regex:/^-?\d{1,10}(\.\d{1,8})?$/'],
+            'longitude' => ['nullable', 'numeric', 'regex:/^-?\d{1,11}(\.\d{1,8})?$/'],
+        ]);
 
-    //     // Step 4: Return a response
-    //     return response()->json(['message' => 'Profile updated successfully', 'user' => $user]);
-    // }
+        if ($request->hasFile('photo')) {
+            // Process and store the uploaded photo
+            $photoPath = $request->file('photo')->store('/profilephoto', [
+                    'disk' => 'uploads',
+                ]);
+            // Update the user's photo field
+            $user->photo = $photoPath;
+        }
 
-    // public function resetPassword(Request $request)
-    // {
-    //     // Step 1: Validate the input
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'token' => 'required',
-    //         'password' => 'required|min:8|confirmed',
-    //     ]);
+        // Update other profile fields
+        $user->user_name = $request->input('user_name');
+        $user->email = $request->input('email');
+        $user->phone_number = $request->input('phone_number');
+        $user->latitude = $request->input('latitude');
+        $user->longitude = $request->input('longitude');
+        $user->save();
 
-    //     // Step 2: Find the user with the provided email and valid token
-    //     $user = User::where('email', $request->email)
-    //         ->where('reset_password_token', $request->token)
-    //         ->where('reset_password_token_expires_at', '>=', now())
-    //         ->first();
+        return response()->json(['message' => 'Profile updated successfully.']);
+    }
 
-    //     if (!$user) {
-    //         return response()->json(['message' => 'Invalid token or expired'], 400);
-    //     }
 
-    //     // Step 3: Update the user's password
-    //     $user->password = bcrypt($request->password);
-    //     $user->reset_password_token = null;
-    //     $user->reset_password_token_expires_at = null;
-    //     $user->save();
+    public function changepassword(Request $request)
+    {
+        $user = Auth::user();
 
-    //     // Step 4: Return a response
-    //     return response()->json(['message' => 'Password reset successfully']);
-    // }
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            return response()->json(['message' => 'Old password is incorrect.'], 401);
+        }
+
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return response()->json(['message' => 'Password changed successfully.']);
+    }
 
     public function register(Request $request)
     {
