@@ -17,7 +17,11 @@ class BlockFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            // 'blocker_id' => random_int(1, 100),
+            // 'blocked_id' => random_int(1, 100),
+            'blocker_id' => fake()->numberBetween(1, 100),
+            'blocked_id' => fake()->numberBetween(1, 100),
+
         ];
     }
 }

@@ -17,7 +17,13 @@ class ShopFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'shop_name'=>fake()->title(),
+            'latitude'=>fake()->latitude(),
+            'longitude'=>fake()->longitude(),
+            'phone_number'=>fake()->phoneNumber(),
+            'logo_photo'=>fake()->imageUrl(),
+            'cover_photo'=>fake()->imageUrl(),
+
         ];
     }
 }

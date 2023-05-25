@@ -17,7 +17,10 @@ class ReportFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'product_id' => fake()->numberBetween(1, 100),
+            'user_id' => fake()->numberBetween(1, 100),
+            'report_text' => fake()->words(2, true),
+
         ];
     }
 }

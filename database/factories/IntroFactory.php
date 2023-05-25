@@ -17,7 +17,9 @@ class IntroFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'image_path' => fake()->imageUrl(),
+            'title' => fake()->title(),
+            'description' => fake()->text(191),
         ];
     }
 }
