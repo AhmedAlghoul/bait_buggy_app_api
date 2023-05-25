@@ -33,51 +33,55 @@ class FavoriteController extends Controller
 
 
 
-        // $request->validate([
-        //     'user_id' => 'required|exists:users,id',
-        //     'product_id' => 'required|exists:products,id',
-        // ]);
-
-        // $favorite = Favorite::where('user_id', $request->input('user_id'))
-        //     ->where('product_id', $request->input('product_id'))
-        //     ->first();
-
-        // if ($favorite) {
-        //     $favorite->delete();
-        //     return response()->json(['message' => 'Product removed from favorites.']);
-        // } else {
-        //     Favorite::create($request->all());
-        //     return response()->json(['message' => 'Product favorited successfully.']);
-        // }
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'product_id' => 'required|exists:products,id',
         ]);
 
-        $userId = $request->input('user_id');
-        $productId = $request->input('product_id');
-
-        $favorite = Favorite::where('user_id', $userId)
-            ->where('product_id', $productId)
+        $favorite = Favorite::where('user_id', $request->input('user_id'))
+            ->where('product_id', $request->input('product_id'))
             ->first();
 
         if ($favorite) {
-            $product = Product::findOrFail($productId);
-            $product->favorites()->detach($favorite->id);
             $favorite->delete();
             return response()->json(['message' => 'Product removed from favorites.']);
         } else {
-
-            $product = Product::findOrFail($productId);
-            $newFavorite = new Favorite();
-            $newFavorite->user_id = $userId;
-            $newFavorite->product_id = $productId;
-            $newFavorite->save();
-
-            // Save in favorite_product pivot table
-            $product->favorites()->attach($newFavorite->id);
+            Favorite::create($request->all());
             return response()->json(['message' => 'Product favorited successfully.']);
         }
+
+
+        //used in many to many relation to save in favoriteproduct table
+
+        // $request->validate([
+        //     'user_id' => 'required|exists:users,id',
+        //     'product_id' => 'required|exists:products,id',
+        // ]);
+
+        // $userId = $request->input('user_id');
+        // $productId = $request->input('product_id');
+
+        // $favorite = Favorite::where('user_id', $userId)
+        //     ->where('product_id', $productId)
+        //     ->first();
+
+        // if ($favorite) {
+        //     $product = Product::findOrFail($productId);
+        //     $product->favorites()->detach($favorite->id);
+        //     $favorite->delete();
+        //     return response()->json(['message' => 'Product removed from favorites.']);
+        // } else {
+
+        //     $product = Product::findOrFail($productId);
+        //     $newFavorite = new Favorite();
+        //     $newFavorite->user_id = $userId;
+        //     $newFavorite->product_id = $productId;
+        //     $newFavorite->save();
+
+        //     // Save in favorite_product pivot table
+        //     $product->favorites()->attach($newFavorite->id);
+        //     return response()->json(['message' => 'Product favorited successfully.']);
+        // }
     }
 
     /**

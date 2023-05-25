@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Favorite;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +16,45 @@ class ProductController extends Controller
     public function index()
     {
         // return Product::all();
-        return Product::with('images')->get();
+        // return Product::with('images')->get();
+
+        
+        //old-to return products which is favorite or not
+
+        // $loggedInUserId = auth()->user()->id;
+
+        // $products = Product::with('images')->get();
+
+        // foreach ($products as $product) {
+        //     $isFavorite = Favorite::where('product_id', $product->id)
+        //         ->where('user_id', $loggedInUserId)
+        //         ->exists();
+
+        //     $product->is_favorite = $isFavorite ? 1 : 0;
+        // }
+
+        // return $products;
+
+        //return all products except blocked users products
+        $loggedInUserId = auth()->user()->id;
+
+        $products = Product::whereDoesntHave('users', function ($query) use ($loggedInUserId) {
+            $query->whereHas('blockers', function ($subQuery) use ($loggedInUserId) {
+                $subQuery->where('blocker_id', $loggedInUserId);
+            });
+        })
+            ->with('images')
+            ->get();
+
+        foreach ($products as $product) {
+            $isFavorite = Favorite::where('product_id', $product->id)
+                ->where('user_id', $loggedInUserId)
+                ->exists();
+
+            $product->is_favorite = $isFavorite ? 1 : 0;
+        }
+
+        return $products;
     }
 
     /**
@@ -112,7 +151,6 @@ class ProductController extends Controller
         }
 
         return $product;
-
     }
 
     /**

@@ -18,6 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 // });
 Route::get('/', function () {
-    return view('index');
-
+    return view('admin.parent');
 });
+
+Route::get('parent', function () {
+    return view('admin.parent');
+})->name('admin.parent');
+
+Route::get('showusers', function () {
+    return view('admin.users.index');
+})->name('users.index');
