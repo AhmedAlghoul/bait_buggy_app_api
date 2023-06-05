@@ -15,8 +15,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
     <base href="">
-    <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel
-        by Keenthemes</title>
+    <title>Bait Buggy Dashboard</title>
     <meta charset="utf-8" />
     <meta name="description"
         content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
@@ -35,12 +34,15 @@ License: For each use you must have a valid license purchased only from above li
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Page Vendor Stylesheets(used by this page)-->
-    <link href="{{asset('adminassets/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('adminassets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('adminassets/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet"
+        type="text/css" />
+
     <!--end::Page Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="{{asset('adminassets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('adminassets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('adminassets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet"
+        type="text/css" />
     @yield('styles')
     <!--end::Global Stylesheets Bundle-->
 </head>
@@ -64,7 +66,8 @@ License: For each use you must have a valid license purchased only from above li
                 <div class="aside-logo flex-column-auto" id="kt_aside_logo">
                     <!--begin::Logo-->
                     <a href="../../demo1/dist/index.html">
-                        <img alt="Logo" src="adminassets/media/logos/logo-1-dark.svg" class="h-25px logo" />
+                        <img alt="Logo" src="{{asset('adminassets/media/logos/logo-1-dark.svg')}}"
+                            class="h-25px logo" />
                     </a>
                     <!--end::Logo-->
                     <!--begin::Aside toggler-->
@@ -141,32 +144,37 @@ License: For each use you must have a valid license purchased only from above li
                                 </div>
                             </div> --}}
 
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
+                                onclick="window.location.href = '{{ route('user.index') }}';">
                                 <span class="menu-link">
                                     <span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
                                         <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M21 9V11C21 11.6 20.6 12 20 12H14V8H20C20.6 8 21 8.4 21 9ZM10 8H4C3.4 8 3 8.4 3 9V11C3 11.6 3.4 12 4 12H10V8Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M15 2C13.3 2 12 3.3 12 5V8H15C16.7 8 18 6.7 18 5C18 3.3 16.7 2 15 2Z"
-                                                    fill="black" />
-                                                <path opacity="0.3"
-                                                    d="M9 2C10.7 2 12 3.3 12 5V8H9C7.3 8 6 6.7 6 5C6 3.3 7.3 2 9 2ZM4 12V21C4 21.6 4.4 22 5 22H10V12H4ZM20 12V21C20 21.6 19.6 22 19 22H14V12H20Z"
-                                                    fill="black" />
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24" />
+                                                    <path
+                                                        d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z"
+                                                        fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                                                    <path
+                                                        d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z"
+                                                        fill="#000000" fill-rule="nonzero" />
+                                                </g>
                                             </svg>
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">Users</span>
+                                    {{-- <a href="{{route('users.index')}}"> --}}
+                                        <span class="menu-title">Users</span>
+                                        {{-- </a> --}}
                                 </span>
 
                             </div>
 
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
+                                onclick="window.location.href = '{{ route('intro.index') }}';">
                                 <span class="menu-link">
                                     <span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -187,30 +195,12 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Svg Icon-->
                                     </span>
                                     <span class="menu-title">Intros</span>
-                                    <span class="menu-arrow"></span>
                                 </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Show</span>
-                                        </span>
 
-                                    </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Create</span>
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
                             {{-- Categories Start --}}
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
+                                onclick="window.location.href = '{{ route('category.index') }}';">
                                 <span class="menu-link">
                                     <span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -231,31 +221,13 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Svg Icon-->
                                     </span>
                                     <span class="menu-title">Categories</span>
-                                    <span class="menu-arrow"></span>
                                 </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Show</span>
-                                        </span>
 
-                                    </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Create</span>
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
                             {{-- Categories End --}}
                             {{-- products Start --}}
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
+                                onclick="window.location.href = '{{ route('product.index') }}';">
                                 <span class="menu-link">
                                     <span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -275,14 +247,14 @@ License: For each use you must have a valid license purchased only from above li
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">products</span>
-
+                                    <span class="menu-title">Products</span>
                                 </span>
 
                             </div>
                             {{-- products End --}}
                             {{-- reports start --}}
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
+                                onclick="window.location.href = '{{ route('report.index') }}';">
                                 <span class="menu-link">
                                     <span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -303,32 +275,14 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Svg Icon-->
                                     </span>
                                     <span class="menu-title">Reports</span>
-                                    <span class="menu-arrow"></span>
                                 </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Show</span>
-                                        </span>
 
-                                    </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Create</span>
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
                             {{-- Reports End --}}
 
                             {{-- shops start --}}
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
+                                onclick="window.location.href = '{{ route('shop.index') }}';">
                                 <span class="menu-link">
                                     <span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -349,32 +303,14 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Svg Icon-->
                                     </span>
                                     <span class="menu-title">Shops</span>
-                                    <span class="menu-arrow"></span>
                                 </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Show</span>
-                                        </span>
 
-                                    </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Create</span>
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
                             {{-- shops End --}}
 
                             {{-- favorites start --}}
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
+                                onclick="window.location.href = '{{ route('favorite.index') }}';">
                                 <span class="menu-link">
                                     <span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -394,28 +330,9 @@ License: For each use you must have a valid license purchased only from above li
                                         </span>
                                         <!--end::Svg Icon-->
                                     </span>
-                                    <span class="menu-title">favorites</span>
-                                    <span class="menu-arrow"></span>
+                                    <span class="menu-title">Favorites</span>
                                 </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Show</span>
-                                        </span>
 
-                                    </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Create</span>
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
                             {{-- favorites End --}}
 
@@ -442,27 +359,8 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Svg Icon-->
                                     </span>
                                     <span class="menu-title">Blocks</span>
-                                    <span class="menu-arrow"></span>
                                 </span>
-                                <div class="menu-sub menu-sub-accordion menu-active-bg">
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Show</span>
-                                        </span>
 
-                                    </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <span class="menu-link">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Create</span>
-                                        </span>
-                                    </div>
-                                </div>
                             </div>
                             {{-- Blocks End --}}
                             {{-- Notifications start --}}
@@ -510,99 +408,6 @@ License: For each use you must have a valid license purchased only from above li
                                 </div>
                             </div>
                             {{-- Notifications End --}}
-                            <div class="menu-item">
-                                <div class="menu-content pt-8 pb-2">
-                                    <span class="menu-section text-muted text-uppercase fs-8 ls-1">Apps</span>
-                                </div>
-                            </div>
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                <span class="menu-link">
-                                    <span class="menu-icon">
-                                        <!--begin::Svg Icon | path: icons/duotune/general/gen002.svg-->
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <path opacity="0.3"
-                                                    d="M4.05424 15.1982C8.34524 7.76818 13.5782 3.26318 20.9282 2.01418C21.0729 1.98837 21.2216 1.99789 21.3618 2.04193C21.502 2.08597 21.6294 2.16323 21.7333 2.26712C21.8372 2.37101 21.9144 2.49846 21.9585 2.63863C22.0025 2.7788 22.012 2.92754 21.9862 3.07218C20.7372 10.4222 16.2322 15.6552 8.80224 19.9462L4.05424 15.1982ZM3.81924 17.3372L2.63324 20.4482C2.58427 20.5765 2.5735 20.7163 2.6022 20.8507C2.63091 20.9851 2.69788 21.1082 2.79503 21.2054C2.89218 21.3025 3.01536 21.3695 3.14972 21.3982C3.28408 21.4269 3.42387 21.4161 3.55224 21.3672L6.66524 20.1802L3.81924 17.3372ZM16.5002 5.99818C16.2036 5.99818 15.9136 6.08615 15.6669 6.25097C15.4202 6.41579 15.228 6.65006 15.1144 6.92415C15.0009 7.19824 14.9712 7.49984 15.0291 7.79081C15.0869 8.08178 15.2298 8.34906 15.4396 8.55884C15.6494 8.76862 15.9166 8.91148 16.2076 8.96935C16.4986 9.02723 16.8002 8.99753 17.0743 8.884C17.3484 8.77046 17.5826 8.5782 17.7474 8.33153C17.9123 8.08486 18.0002 7.79485 18.0002 7.49818C18.0002 7.10035 17.8422 6.71882 17.5609 6.43752C17.2796 6.15621 16.8981 5.99818 16.5002 5.99818Z"
-                                                    fill="black" />
-                                                <path
-                                                    d="M4.05423 15.1982L2.24723 13.3912C2.15505 13.299 2.08547 13.1867 2.04395 13.0632C2.00243 12.9396 1.9901 12.8081 2.00793 12.679C2.02575 12.5498 2.07325 12.4266 2.14669 12.3189C2.22013 12.2112 2.31752 12.1219 2.43123 12.0582L9.15323 8.28918C7.17353 10.3717 5.4607 12.6926 4.05423 15.1982ZM8.80023 19.9442L10.6072 21.7512C10.6994 21.8434 10.8117 21.9129 10.9352 21.9545C11.0588 21.996 11.1903 22.0083 11.3195 21.9905C11.4486 21.9727 11.5718 21.9252 11.6795 21.8517C11.7872 21.7783 11.8765 21.6809 11.9402 21.5672L15.7092 14.8442C13.6269 16.8245 11.3061 18.5377 8.80023 19.9442ZM7.04023 18.1832L12.5832 12.6402C12.7381 12.4759 12.8228 12.2577 12.8195 12.032C12.8161 11.8063 12.725 11.5907 12.5653 11.4311C12.4057 11.2714 12.1901 11.1803 11.9644 11.1769C11.7387 11.1736 11.5205 11.2583 11.3562 11.4132L5.81323 16.9562L7.04023 18.1832Z"
-                                                    fill="black" />
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                                    <span class="menu-title">Projects</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                                <div class="menu-sub menu-sub-accordion">
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/apps/projects/list.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">My Projects</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/apps/projects/project.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">View Project</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/apps/projects/targets.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Targets</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/apps/projects/budget.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Budget</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/apps/projects/users.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Users</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/apps/projects/files.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Files</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/apps/projects/activity.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Activity</span>
-                                        </a>
-                                    </div>
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="../../demo1/dist/apps/projects/settings.html">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Settings</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
 
 
                         </div>
@@ -643,7 +448,7 @@ License: For each use you must have a valid license purchased only from above li
                         <!--begin::Mobile logo-->
                         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
                             <a href="../../demo1/dist/index.html" class="d-lg-none">
-                                <img alt="Logo" src="adminassets/media/logos/logo-2.svg" class="h-30px" />
+                                <img alt="Logo" src="{{asset('adminassets/media/logos/logo-2.svg')}}" class="h-30px" />
                             </a>
                         </div>
                         <!--end::Mobile logo-->
@@ -2157,7 +1962,8 @@ License: For each use you must have a valid license purchased only from above li
                                                             class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                             <!--begin::Symbol-->
                                                             <div class="symbol symbol-40px me-4">
-                                                                <img src="adminassets/media/avatars/300-6.jpg" alt="" />
+                                                                <img src="{{asset('adminassets/media/avatars/300-6.jpg')}}"
+                                                                    alt="" />
                                                             </div>
                                                             <!--end::Symbol-->
                                                             <!--begin::Title-->
@@ -2175,7 +1981,8 @@ License: For each use you must have a valid license purchased only from above li
                                                             class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                             <!--begin::Symbol-->
                                                             <div class="symbol symbol-40px me-4">
-                                                                <img src="adminassets/media/avatars/300-2.jpg" alt="" />
+                                                                <img src="{{asset('adminassets/media/avatars/300-2.jpg')}}"
+                                                                    alt="" />
                                                             </div>
                                                             <!--end::Symbol-->
                                                             <!--begin::Title-->
@@ -2193,7 +2000,8 @@ License: For each use you must have a valid license purchased only from above li
                                                             class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                             <!--begin::Symbol-->
                                                             <div class="symbol symbol-40px me-4">
-                                                                <img src="adminassets/media/avatars/300-9.jpg" alt="" />
+                                                                <img src="{{asset('adminassets/media/avatars/300-9.jpg')}}"
+                                                                    alt="" />
                                                             </div>
                                                             <!--end::Symbol-->
                                                             <!--begin::Title-->
@@ -2211,7 +2019,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                             <!--begin::Symbol-->
                                                             <div class="symbol symbol-40px me-4">
-                                                                <img src="adminassets/media/avatars/300-14.jpg"
+                                                                <img src="{{asset('adminassets/media/avatars/300-14.jpg')}}"
                                                                     alt="" />
                                                             </div>
                                                             <!--end::Symbol-->
@@ -2230,7 +2038,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                             <!--begin::Symbol-->
                                                             <div class="symbol symbol-40px me-4">
-                                                                <img src="adminassets/media/avatars/300-11.jpg"
+                                                                <img src="{{asset('adminassets/media/avatars/300-11.jpg')}}"
                                                                     alt="" />
                                                             </div>
                                                             <!--end::Symbol-->
@@ -2255,7 +2063,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <div class="symbol symbol-40px me-4">
                                                                 <span class="symbol-label bg-light">
                                                                     <img class="w-20px h-20px"
-                                                                        src="adminassets/media/svg/brand-logos/volicity-9.svg"
+                                                                        src="{{asset('adminassets/media/svg/brand-logos/volicity-9.svg')}}"
                                                                         alt="" />
                                                                 </span>
                                                             </div>
@@ -2276,7 +2084,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <div class="symbol symbol-40px me-4">
                                                                 <span class="symbol-label bg-light">
                                                                     <img class="w-20px h-20px"
-                                                                        src="adminassets/media/svg/brand-logos/tvit.svg"
+                                                                        src="{{asset('adminassets/media/svg/brand-logos/tvit.svg')}}"
                                                                         alt="" />
                                                                 </span>
                                                             </div>
@@ -2298,7 +2106,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <div class="symbol symbol-40px me-4">
                                                                 <span class="symbol-label bg-light">
                                                                     <img class="w-20px h-20px"
-                                                                        src="adminassets/media/svg/misc/infography.svg"
+                                                                        src="{{asset('adminassets/media/svg/misc/infography.svg')}}"
                                                                         alt="" />
                                                                 </span>
                                                             </div>
@@ -2320,7 +2128,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <div class="symbol symbol-40px me-4">
                                                                 <span class="symbol-label bg-light">
                                                                     <img class="w-20px h-20px"
-                                                                        src="adminassets/media/svg/brand-logos/leaf.svg"
+                                                                        src="{{asset('adminassets/media/svg/brand-logos/leaf.svg')}}"
                                                                         alt="" />
                                                                 </span>
                                                             </div>
@@ -2341,7 +2149,7 @@ License: For each use you must have a valid license purchased only from above li
                                                             <div class="symbol symbol-40px me-4">
                                                                 <span class="symbol-label bg-light">
                                                                     <img class="w-20px h-20px"
-                                                                        src="adminassets/media/svg/brand-logos/tower.svg"
+                                                                        src="{{asset('adminassets/media/svg/brand-logos/tower.svg')}}"
                                                                         alt="" />
                                                                 </span>
                                                             </div>
@@ -3011,7 +2819,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
                                         data-kt-menu-trigger="click" data-kt-menu-attach="parent"
                                         data-kt-menu-placement="bottom-end">
-                                        <img src="adminassets/media/avatars/300-1.jpg" alt="user" />
+                                        <img src="{{asset('adminassets/media/avatars/300-1.jpg')}}" alt="user" />
                                     </div>
                                     <!--begin::User account menu-->
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px"
@@ -3021,7 +2829,8 @@ License: For each use you must have a valid license purchased only from above li
                                             <div class="menu-content d-flex align-items-center px-3">
                                                 <!--begin::Avatar-->
                                                 <div class="symbol symbol-50px me-5">
-                                                    <img alt="Logo" src="adminassets/media/avatars/300-1.jpg" />
+                                                    <img alt="Logo"
+                                                        src="{{asset('adminassets/media/avatars/300-1.jpg')}}" />
                                                 </div>
                                                 <!--end::Avatar-->
                                                 <!--begin::Username-->
@@ -3131,7 +2940,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <span
                                                         class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
                                                         <img class="w-15px h-15px rounded-1 ms-2"
-                                                            src="adminassets/media/flags/united-states.svg"
+                                                            src="{{asset('adminassets/media/flags/united-states.svg')}}"
                                                             alt="" /></span></span>
                                             </a>
                                             <!--begin::Menu sub-->
@@ -3142,7 +2951,7 @@ License: For each use you must have a valid license purchased only from above li
                                                         class="menu-link d-flex px-5 active">
                                                         <span class="symbol symbol-20px me-4">
                                                             <img class="rounded-1"
-                                                                src="adminassets/media/flags/united-states.svg"
+                                                                src="{{asset('adminassets/media/flags/united-states.svg')}}"
                                                                 alt="" />
                                                         </span>English</a>
                                                 </div>
@@ -3153,7 +2962,8 @@ License: For each use you must have a valid license purchased only from above li
                                                         class="menu-link d-flex px-5">
                                                         <span class="symbol symbol-20px me-4">
                                                             <img class="rounded-1"
-                                                                src="adminassets/media/flags/spain.svg" alt="" />
+                                                                src="{{asset('adminassets/media/flags/spain.svg')}}"
+                                                                alt="" />
                                                         </span>Spanish</a>
                                                 </div>
                                                 <!--end::Menu item-->
@@ -3163,7 +2973,8 @@ License: For each use you must have a valid license purchased only from above li
                                                         class="menu-link d-flex px-5">
                                                         <span class="symbol symbol-20px me-4">
                                                             <img class="rounded-1"
-                                                                src="adminassets/media/flags/germany.svg" alt="" />
+                                                                src="{{asset('adminassets/media/flags/germany.svg')}}"
+                                                                alt="" />
                                                         </span>German</a>
                                                 </div>
                                                 <!--end::Menu item-->
@@ -3173,7 +2984,8 @@ License: For each use you must have a valid license purchased only from above li
                                                         class="menu-link d-flex px-5">
                                                         <span class="symbol symbol-20px me-4">
                                                             <img class="rounded-1"
-                                                                src="adminassets/media/flags/japan.svg" alt="" />
+                                                                src="{{asset('adminassets/media/flags/japan.svg')}}"
+                                                                alt="" />
                                                         </span>Japanese</a>
                                                 </div>
                                                 <!--end::Menu item-->
@@ -3183,7 +2995,8 @@ License: For each use you must have a valid license purchased only from above li
                                                         class="menu-link d-flex px-5">
                                                         <span class="symbol symbol-20px me-4">
                                                             <img class="rounded-1"
-                                                                src="adminassets/media/flags/france.svg" alt="" />
+                                                                src="{{asset('adminassets/media/flags/france.svg')}}"
+                                                                alt="" />
                                                         </span>French</a>
                                                 </div>
                                                 <!--end::Menu item-->
@@ -3443,7 +3256,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-success rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo1.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo1.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo1"
@@ -3459,7 +3273,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo2.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo2.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo2"
@@ -3475,7 +3290,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo3.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo3.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo3"
@@ -3491,7 +3307,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo4.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo4.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo4"
@@ -3507,7 +3324,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo5.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo5.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo5"
@@ -3523,7 +3341,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo6.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo6.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo6"
@@ -3539,7 +3358,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo7.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo7.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo7"
@@ -3555,7 +3375,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo8.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo8.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo8"
@@ -3571,7 +3392,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo9.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo9.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo9"
@@ -3587,7 +3409,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo10.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo10.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo10"
@@ -3603,7 +3426,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo11.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo11.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo11"
@@ -3619,7 +3443,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo12.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo12.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo12"
@@ -3635,7 +3460,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo13.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo13.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo13"
@@ -3651,7 +3477,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo14.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo14.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo14"
@@ -3667,7 +3494,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo15.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo15.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo15"
@@ -3683,7 +3511,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo16.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo16.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo16"
@@ -3699,7 +3528,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo17.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo17.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo17"
@@ -3715,7 +3545,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo18.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo18.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo18"
@@ -3731,7 +3562,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo19.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo19.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo19"
@@ -3747,7 +3579,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo20.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo20.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo20"
@@ -3763,7 +3596,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo21.png" alt="demo" class="w-100" />
+                                            <img src="{{asset('adminassets/media/demos/demo21.png')}}" alt="demo"
+                                                class="w-100" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
                                             <a href="https://preview.keenthemes.com/metronic8/demo21"
@@ -3779,7 +3613,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo22.png" alt="demo"
+                                            <img src="{{asset('adminassets/media/demos/demo22.png')}}" alt="demo"
                                                 class="w-100 opacity-25" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
@@ -3796,7 +3630,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo23.png" alt="demo"
+                                            <img src="{{asset('adminassets/media/demos/demo23.png')}}" alt="demo"
                                                 class="w-100 opacity-25" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
@@ -3813,7 +3647,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <div
                                         class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                         <div class="overlay-wrapper">
-                                            <img src="adminassets/media/demos/demo24.png" alt="demo"
+                                            <img src="{{asset('adminassets/media/demos/demo24.png')}}" alt="demo"
                                                 class="w-100 opacity-25" />
                                         </div>
                                         <div class="overlay-layer bg-dark bg-opacity-10">
@@ -5373,11 +5207,11 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--end::Input-->
                                                 <!--begin::Card logos-->
                                                 <div class="position-absolute translate-middle-y top-50 end-0 me-5">
-                                                    <img src="adminassets/media/svg/card-logos/visa.svg" alt=""
-                                                        class="h-25px" />
-                                                    <img src="adminassets/media/svg/card-logos/mastercard.svg" alt=""
-                                                        class="h-25px" />
-                                                    <img src="adminassets/media/svg/card-logos/american-express.svg"
+                                                    <img src="{{asset('adminassets/media/svg/card-logos/visa.svg')}}"
+                                                        alt="" class="h-25px" />
+                                                    <img src="{{asset('adminassets/media/svg/card-logos/mastercard.svg')}}"
+                                                        alt="" class="h-25px" />
+                                                    <img src="{{asset('adminassets/media/svg/card-logos/american-express.svg')}}"
                                                         alt="" class="h-25px" />
                                                 </div>
                                                 <!--end::Card logos-->
@@ -5510,8 +5344,8 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Description-->
                                         <!--begin::Illustration-->
                                         <div class="text-center px-4 py-15">
-                                            <img src="adminassets/media/illustrations/sketchy-1/9.png" alt=""
-                                                class="mw-100 mh-300px" />
+                                            <img src="{{asset('adminassets/media/illustrations/sketchy-1/9.png')}}"
+                                                alt="" class="mw-100 mh-300px" />
                                         </div>
                                         <!--end::Illustration-->
                                     </div>
@@ -5634,7 +5468,7 @@ License: For each use you must have a valid license purchased only from above li
                     <!--end::Heading-->
                     <!--begin::Google Contacts Invite-->
                     <div class="btn btn-light-primary fw-bolder w-100 mb-8">
-                        <img alt="Logo" src="adminassets/media/svg/brand-logos/google-icon.svg"
+                        <img alt="Logo" src="{{asset('adminassets/media/svg/brand-logos/google-icon.svg')}}"
                             class="h-20px me-3" />Invite
                         Gmail Contacts
                     </div>
@@ -5661,7 +5495,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="adminassets/media/avatars/300-6.jpg" />
+                                        <img alt="Pic" src="{{asset('adminassets/media/avatars/300-6.jpg')}}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -5721,7 +5555,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="adminassets/media/avatars/300-1.jpg" />
+                                        <img alt="Pic" src="{{asset('adminassets/media/avatars/300-1.jpg')}}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -5751,7 +5585,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="adminassets/media/avatars/300-5.jpg" />
+                                        <img alt="Pic" src="{{asset('adminassets/media/avatars/300-5.jpg')}}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -5781,7 +5615,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="adminassets/media/avatars/300-25.jpg" />
+                                        <img alt="Pic" src="{{asset('adminassets/media/avatars/300-25.jpg')}}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -5841,7 +5675,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="adminassets/media/avatars/300-9.jpg" />
+                                        <img alt="Pic" src="{{asset('adminassets/media/avatars/300-9.jpg')}}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -5931,7 +5765,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="adminassets/media/avatars/300-23.jpg" />
+                                        <img alt="Pic" src="{{asset('adminassets/media/avatars/300-23.jpg')}}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -5991,7 +5825,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="adminassets/media/avatars/300-12.jpg" />
+                                        <img alt="Pic" src="{{asset('adminassets/media/avatars/300-13.jpg')}}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -6051,7 +5885,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="adminassets/media/avatars/300-13.jpg" />
+                                        <img alt="Pic" src="{{asset('adminassets/media/avatars/300-13.jpg')}}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -6111,7 +5945,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="adminassets/media/avatars/300-21.jpg" />
+                                        <img alt="Pic" src="{{asset('adminassets/media/avatars/300-21.jpg')}}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -6141,7 +5975,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="adminassets/media/avatars/300-13.jpg" />
+                                        <img alt="Pic" src="{{asset('adminassets/media/avatars/300-13.jpg')}}" />
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
@@ -6293,7 +6127,7 @@ License: For each use you must have a valid license purchased only from above li
                                         class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle me-5">
-                                            <img alt="Pic" src="adminassets/media/avatars/300-6.jpg" />
+                                            <img alt="Pic" src="{{asset('adminassets/media/avatars/300-6.jpg')}}" />
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Info-->
@@ -6325,7 +6159,7 @@ License: For each use you must have a valid license purchased only from above li
                                         class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle me-5">
-                                            <img alt="Pic" src="adminassets/media/avatars/300-1.jpg" />
+                                            <img alt="Pic" src="{{asset('adminassets/media/avatars/300-1.jpg')}}" />
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Info-->
@@ -6341,7 +6175,7 @@ License: For each use you must have a valid license purchased only from above li
                                         class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle me-5">
-                                            <img alt="Pic" src="adminassets/media/avatars/300-5.jpg" />
+                                            <img alt="Pic" src="{{asset('adminassets/media/avatars/300-5.jpg')}}" />
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Info-->
@@ -6357,7 +6191,7 @@ License: For each use you must have a valid license purchased only from above li
                                         class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle me-5">
-                                            <img alt="Pic" src="adminassets/media/avatars/300-25.jpg" />
+                                            <img alt="Pic" src="{{asset('adminassets/media/avatars/300-25.jpg')}}" />
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Info-->
@@ -6389,7 +6223,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Checkbox-->
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="adminassets/media/avatars/300-6.jpg" />
+                                                <img alt="Pic" src="{{asset('adminassets/media/avatars/300-6.jpg')}}" />
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -6471,7 +6305,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Checkbox-->
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="adminassets/media/avatars/300-1.jpg" />
+                                                <img alt="Pic" src="{{asset('adminassets/media/avatars/300-1.jpg')}}" />
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -6512,7 +6346,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Checkbox-->
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="adminassets/media/avatars/300-5.jpg" />
+                                                <img alt="Pic" src="{{asset('adminassets/media/avatars/300-5.jpg')}}" />
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -6553,7 +6387,8 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Checkbox-->
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="adminassets/media/avatars/300-25.jpg" />
+                                                <img alt="Pic"
+                                                    src="{{asset('adminassets/media/avatars/300-25.jpg')}}" />
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -6636,7 +6471,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Checkbox-->
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="adminassets/media/avatars/300-9.jpg" />
+                                                <img alt="Pic" src="{{asset('adminassets/media/avatars/300-9.jpg')}}" />
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -6760,7 +6595,8 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Checkbox-->
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="adminassets/media/avatars/300-23.jpg" />
+                                                <img alt="Pic"
+                                                    src="{{asset('adminassets/media/avatars/300-23.jpg')}}" />
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -6842,7 +6678,8 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Checkbox-->
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="adminassets/media/avatars/300-12.jpg" />
+                                                <img alt="Pic"
+                                                    src="{{asset('adminassets/media/avatars/300-12.jpg')}}" />
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -6924,7 +6761,8 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Checkbox-->
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="adminassets/media/avatars/300-13.jpg" />
+                                                <img alt="Pic"
+                                                    src="{{asset('adminassets/media/avatars/300-13.jpg')}}" />
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -7007,7 +6845,8 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Checkbox-->
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="adminassets/media/avatars/300-21.jpg" />
+                                                <img alt="Pic"
+                                                    src="{{asset('adminassets/media/avatars/300-21.jpg')}}" />
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -7096,7 +6935,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--end::Message-->
                                 <!--begin::Illustration-->
                                 <div class="text-center px-5">
-                                    <img src="adminassets/media/illustrations/sketchy-1/1.png" alt=""
+                                    <img src="{{asset('adminassets/media/illustrations/sketchy-1/1.png')}}" alt=""
                                         class="w-100 h-200px h-sm-325px" />
                                 </div>
                                 <!--end::Illustration-->

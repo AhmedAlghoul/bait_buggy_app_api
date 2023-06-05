@@ -37,6 +37,9 @@ Route::apiResource('notifications', NotificationController::class);
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('showintros', [IntroController::class, 'index']);
+    //temp
+    Route::post('addintros', [IntroController::class, 'store']);
+    //end temp
     Route::get('showcategories', [CategoryController::class, 'index']);
     Route::get('showshops', [ShopController::class, 'index']);
     Route::post('addreport', [ReportController::class, 'store']);
@@ -45,7 +48,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('addfavorite', [FavoriteController::class, 'store']);
     Route::apiResource('products', ProductController::class);
     Route::get('/products/search/{title}', [ProductController::class, 'search']);
-
     Route::post('/changepassword', [AuthController::class, 'changepassword']);
     Route::post('/editprofile', [AuthController::class, 'editprofile']);
     Route::post('/logout', [AuthController::class, 'logout']);

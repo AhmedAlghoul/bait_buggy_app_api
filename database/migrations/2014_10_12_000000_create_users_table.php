@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
+            $table->string('address')->nullable();
             $table->enum('user_type', ['user', 'shop_owner']);
             $table->rememberToken();
             $table->timestamps();

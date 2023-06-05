@@ -14,6 +14,11 @@ class Report extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
-      }
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }

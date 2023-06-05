@@ -52,7 +52,6 @@ class User extends Authenticatable
     public function blocks()
     {
         return $this->belongsToMany(Block::class, 'blocks');
-
     }
     public function blockers()
     {
@@ -62,5 +61,14 @@ class User extends Authenticatable
     public function blockedUsers()
     {
         return $this->belongsToMany(User::class, 'blocks', 'blocker_id', 'blocked_id');
+    }
+
+    // mutatour
+    public function getImagePathAttribute()
+    {
+        if ($this->photo == null) {
+            return asset('adminassets/media/avatars/300-6.jpg');
+        }
+        return asset('uploads/' . $this->photo);
     }
 }

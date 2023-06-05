@@ -25,6 +25,7 @@ class UserFactory extends Factory
             'photo' =>fake()->imageUrl(),
             'latitude' =>fake()->latitude(),
             'longitude' =>fake()->longitude(),
+            'address' =>fake()->address(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'user_type' =>fake()->randomElement(['user', 'shop_owner']),
             'remember_token' => Str::random(10),
