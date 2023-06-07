@@ -20,6 +20,7 @@ class ShopFactory extends Factory
             'shop_name'=>fake()->title(),
             'latitude'=>fake()->latitude(),
             'longitude'=>fake()->longitude(),
+            'address'=>fake()->address(),
             'phone_number'=>fake()->phoneNumber(),
             'logo_photo'=>fake()->imageUrl(),
             'cover_photo'=>fake()->imageUrl(),

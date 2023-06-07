@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Report;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -21,7 +23,10 @@ class ReportController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        $users = User::all();
+
+        return response()->view('admin.reports.create', compact('products', 'users'));
     }
 
     /**
@@ -29,7 +34,21 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'product' => 'required',
+                'user' => 'required',
+                'report' => 'required',
+            ]
+        );
+
+        $user =  Report::create([
+            'product_id' => $request->input('product'),
+            'user_id' => $request->input('user'),
+            'report_text' => $request->input('report'),
+        ]);
+        session()->flash('success', 'Report has been added successfully');
+        return redirect()->route('report.create');
     }
 
     /**
@@ -45,7 +64,11 @@ class ReportController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $report = Report::findOrFail($id);
+        $products = Product::all();
+        $users = User::all();
+
+        return response()->view('admin.reports.edit', compact('products', 'users', 'report'));
     }
 
     /**
@@ -53,7 +76,22 @@ class ReportController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate(
+            [
+                'product' => 'required',
+                'user' => 'required',
+                'report' => 'required',
+            ]
+        );
+
+        $report = Report::findOrFail($id);
+        $report->product_id = $request->input('product');
+        $report->user_id = $request->input('user');
+        $report->report_text = $request->input('report');
+        $report->save();
+
+        session()->flash('success', 'Report has been updated successfully');
+        return redirect()->route('report.index');
     }
 
     /**

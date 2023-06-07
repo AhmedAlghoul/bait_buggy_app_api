@@ -21,7 +21,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-        //
+        return response()->view('admin.shops.create');
     }
 
     /**

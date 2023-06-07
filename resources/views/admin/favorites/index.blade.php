@@ -30,8 +30,8 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Shop Name</th>
-                        <th>GeoLocation</th>
+                        <th>favorite product</th>
+                        <th>the user</th>
                         <th>Actions</th>
                     </tr>
                 </thead>

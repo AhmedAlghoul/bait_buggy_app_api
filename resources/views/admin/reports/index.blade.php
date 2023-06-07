@@ -11,7 +11,7 @@
         <div style="text-align: center;">
             <h2>Reports List</h2>
         </div>
-        <a href="http://127.0.0.1:8000/user/create" class="btn btn-primary">
+        <a href="{{route('report.create')}}" class="btn btn-primary">
 
             <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
             <span class="svg-icon svg-icon-2">
