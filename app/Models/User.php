@@ -53,15 +53,6 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Block::class, 'blocks');
     }
-    public function blockers()
-    {
-        return $this->belongsToMany(User::class, 'blocks', 'blocked_id', 'blocker_id');
-    }
-
-    public function blockedUsers()
-    {
-        return $this->belongsToMany(User::class, 'blocks', 'blocker_id', 'blocked_id');
-    }
 
     // mutatour
     public function getImagePathAttribute()

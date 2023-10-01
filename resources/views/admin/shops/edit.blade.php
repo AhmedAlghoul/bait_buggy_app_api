@@ -13,8 +13,9 @@
 @section('content')
 
 <form class="form" style="background-color: white; border: 1px solid #e4e7f0; padding: 20px;" role="form" method="POST"
-    enctype="multipart/form-data" action="{{route('shop.store')}}">
+    enctype="multipart/form-data" action="{{route('shop.update',$shop->id)}}">
     @csrf
+    @method('PUT')
     <div class="card-body">
         @if ($errors->any())
         <div class="alert alert-danger" role="alert" id="error-message">
@@ -41,7 +42,7 @@
             <!--end::Label-->
             <!--begin::Input-->
             <input type="text" name="shop_name" class="form-control form-control-solid mb-3 mb-lg-0"
-                placeholder="Enter Shop Name">
+                placeholder="Enter Shop Name" value="{{}}">
             <!--end::Input-->
             <div class="fv-plugins-message-container invalid-feedback"></div>
         </div>

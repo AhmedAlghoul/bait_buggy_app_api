@@ -338,7 +338,8 @@ License: For each use you must have a valid license purchased only from above li
 
 
                             {{-- Blocks start --}}
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion"
+                                onclick="window.location.href = '{{ route('block.index') }}';">
                                 <span class="menu-link">
                                     <span class="menu-icon">
                                         <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->

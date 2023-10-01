@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\BlockController;
 use App\Http\Controllers\CategoryController as ControllersCategoryController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\IntroController;
@@ -44,3 +45,5 @@ Route::resource('product', ProductController::class);
 Route::resource('report', ReportController::class);
 Route::resource('shop', ShopController::class);
 Route::resource('favorite', FavoriteController::class);
+Route::resource('block', BlockController::class);
+

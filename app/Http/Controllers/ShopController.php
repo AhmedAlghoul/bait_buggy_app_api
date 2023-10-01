@@ -29,7 +29,53 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'shop_name' => 'required',
+                'phone_number' => 'required',
+                'address' => 'required',
+                'latitude' => 'required',
+                'longitude' => 'required',
+                'logo_photo_url' => 'required',
+                'cover_photo_url' => 'required',
+
+            ]
+        );
+        if ($request->hasFile('logo_photo_url')) {
+
+            $file = $request->file('logo_photo_url');
+
+            $image_file = $file->store('/', ['disk' => 'uploads']);
+
+            $request->merge([
+                'logo_photo' => $image_file,
+            ]);
+        }
+
+        if ($request->hasFile('cover_photo_url')) {
+
+            $file = $request->file('cover_photo_url');
+
+            $image_file = $file->store('/', ['disk' => 'uploads']);
+
+            $request->merge([
+                'cover_photo' => $image_file,
+            ]);
+        }
+
+        $shop =  Shop::create([
+            'shop_name' => $request->input('shop_name'),
+            'phone_number' => $request->input('phone_number'),
+            'logo_photo' => $request->input('logo_photo'),
+            'cover_photo' => $request->input('cover_photo'),
+            'latitude' => $request->input('latitude'),
+            'longitude' => $request->input('longitude'),
+            'address' => $request->input('address'),
+
+
+        ]);
+        session()->flash('success', 'Shop has been added successfully');
+        return redirect()->route('shop.create');
     }
 
     /**
@@ -45,7 +91,7 @@ class ShopController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.shops.edit');
     }
 
     /**

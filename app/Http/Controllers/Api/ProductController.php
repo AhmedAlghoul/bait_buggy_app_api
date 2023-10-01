@@ -18,7 +18,7 @@ class ProductController extends Controller
         // return Product::all();
         // return Product::with('images')->get();
 
-        
+
         //old-to return products which is favorite or not
 
         // $loggedInUserId = auth()->user()->id;
@@ -45,7 +45,7 @@ class ProductController extends Controller
         })
             ->with('images')
             ->get();
-
+                
         foreach ($products as $product) {
             $isFavorite = Favorite::where('product_id', $product->id)
                 ->where('user_id', $loggedInUserId)
@@ -174,6 +174,7 @@ class ProductController extends Controller
         return response()->json(['message' => 'Product and related images deleted successfully']);
     }
 
+    //search method
     public function search(string $title)
     {
         return Product::where('title', 'like', '%' . $title . '%')->get();
